@@ -12,7 +12,7 @@ data_val = iddata(y(ind_val:end), u(ind_val:end), t(2)-t(1));
 %% BJ Model start
 d = 0;
 n_max = 3;
-bj_m1 = bj(data_est, [10, n_max, n_max, n_max, d]);
+bj_m1 = bj(data_est, [n_max, n_max, n_max, n_max, d]);
 
 % d bestimmen
 while(bj_m1.B(d+1)==0)

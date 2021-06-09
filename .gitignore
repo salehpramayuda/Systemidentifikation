@@ -191,6 +191,9 @@ WhatsApp Video 2021-04-01 at 18.25.24.mp4
 # scrwfile
 *.wrt
 
+# simulink
+**.slxc
+
 # sympy
 *.sout
 *.sympy
@@ -285,3 +288,4 @@ folie
 uebung/uebung_02/slprj
 uebung/uebung_03/slprj
 uebung/uebung_04/slprj
+uebung/uebung_05/Selbstkontrolle/slprj
