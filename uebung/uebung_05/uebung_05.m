@@ -33,7 +33,7 @@ for i=1:4
         bj_m1 = bj(data_est, [na, n_max, n_max, na, d]);
 %         y_hat = lsim(bj_m1, data_val.u, t_lsim);
 %         fit_hist(na) = 100*(1-goodnessOfFit(y_hat,data_val.y,'NMSE'));
-        [~, fit_hist(na), ~] = compare(data_val, bj_m1, 100);
+        [~, fit_hist(na), ~] = compare(data_val, bj_m1, 1);
     end
     [~, na] = max(fit_hist);
 
@@ -43,7 +43,7 @@ for i=1:4
         bj_m1 = bj(data_est, [nb, n_max, n_max, na, d]);
 %         y_hat = lsim(bj_m1, data_val.u, t_lsim);
 %         fit_hist(nb+1) = 100*(1-goodnessOfFit(y_hat,data_val.y,'NMSE'));
-        [~, fit_hist(nb+1), ~] = compare(data_val, bj_m1, 100);
+        [~, fit_hist(nb+1), ~] = compare(data_val, bj_m1, 1);
     end
     [~, nb] = max(fit_hist); nb=nb-1;
 
@@ -53,7 +53,7 @@ for i=1:4
         bj_m1 = bj(data_est, [nb, nc, nc, na, d]);
 %         y_hat = lsim(bj_m1, data_val.u, t_lsim);
 %         fit_hist(nc+1) = 100*(1-goodnessOfFit(y_hat,data_val.y,'NMSE'));
-        [~, fit_hist(nc+1), ~] = compare(data_val, bj_m1, 100);
+        [~, fit_hist(nc+1), ~] = compare(data_val, bj_m1, 1);
     end
     [~, nc] = max(fit_hist); nc=nc-1;
     nd = nc;
