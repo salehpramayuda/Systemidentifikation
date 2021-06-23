@@ -1,6 +1,10 @@
 function [Ei, Fi] = dio(X, Y, i)
     syms q q_1
-    x = coeffs(X);  % Polynome zu Matrizen
+    if isnumeric(X)
+        x = X;
+    else
+        x = coeffs(X); % Polynome zu Matrizen
+    end
     E_j = x(1);
     F_j = q*(X-x(1)*Y);
     j = 1;
@@ -19,5 +23,12 @@ function [Ei, Fi] = dio(X, Y, i)
     F_j = matlabFunction(F_j);  % q mit 1/q_1 ersetzen
     Ei = E_j;
     Fi = F_j(1/q_1, q_1);
+    
+    if ~isnumeric(Ei)
+        Ei = simplify(Ei);
+    end
+    if ~isnumeric(Fi)
+        Fi = simplify(Fi);
+    end
 end
 
