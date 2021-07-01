@@ -3,6 +3,43 @@ function [Ei, Fi] = dio_gl(X, Y, i)
 %
 deg_X = length(X)-1;
 deg_Y = length(Y)-1;
+j=1;
+while(j<=i)
+    if(j=1)
+        Ei = X(1);
+        if(length(X)>length(Y))
+            X_erw = X;
+            Y_erw = [Y, zeros(1,deg_X-deg_Y)];
+        else
+            Y_erw = Y;
+            X_erw = [X, zeros(1,deg_Y-deg_X)];
+        end
+        Fi = zeros(1,length(X_erw)-1);
+        for i=1:length(X_erw)-1
+            Fi(i) = X_erw(i+1)-X_erw(1)*Y_erw(i+1);
+        end
+    else
+        % Grad E bestimmen
+        if deg_Y>0
+            deg_E = j-1;
+        else
+            deg_E = min([j-1, deg_X]);
+        end
+        % Grad F bestimmen
+        deg_F = max([-j+deg_X, deg_Y-1]);
+        % Rekursive Aufruf
+
+        Ei(deg_E+1) = Fi(1);
+        F_i(deg_F+1) = 0;
+        Fi = zeros(1, deg_F+1);
+        for i = 1:deg_F+1
+            Fi(i) = F_im1(i+1)-Y(i+1)*F_im1(1);
+        end
+    end
+    j = j+1;
+end
+
+
 if(i~=1)
     % Grad E bestimmen
     if deg_Y>0
